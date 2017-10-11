@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends "myApp/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+        {% if registered %}
+            <h1>Thank you for registration!</h1>
+        {% else %}
+            <h1>Register here</h1>
+            <h3>Fill out the form:</h3>
+            <form class="" action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ user_form.as_p }}
+                {{ profile_form.as_p }}
+                <input type="submit" name="" value="Register">
+            </form>
+        {% endif %}
+        <h2>Please, sign up the new player here!</h1>
+        <form class="" method="POST">
+            {{ player_form.as_p }}
+            {% csrf_token %}
+            <input type="submit" name="" class="btn btn-primary" value="Submit">
+        </form>
+    </div>
+</div>
+{% endblock %}
